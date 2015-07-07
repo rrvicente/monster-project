@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="/WEB-INF/_template.xhtml">
+
+	<ui:define name="corpo">
+ 
+		<h:form>
+			<h2>
+				<h:outputText value="Perguntas Cadastradas"/>
+			</h2>
+
+			<fieldset>
+				<legend>Perguntas</legend>
+
+				<h:dataTable value="#{perguntaBean.perguntas}" var="pergunta" styleClass="dados" rowClasses="impar, par">
+					<h:column>
+						<f:facet name="header">ID</f:facet>
+						#{pergunta.id}
+					</h:column>
+					<h:column>
+						<f:facet name="header">Descrição</f:facet>
+						#{pergunta.descricao}
+					</h:column>
+
+					<h:column>
+						<f:facet name="header">Ações
+							<h:commandLink action="#{perguntaBean.novaPergunta(pergunta)}" value="Adicionar" actionListener="#{perguntaBean.obterObjeto}">	
+							</h:commandLink>
+						</f:facet>
+						<h:commandLink action="#{perguntaBean.removerPergunta(pergunta)}" value="Remover">						
+							<br></br>
+							<f:ajax execute="@form" render="@form" />
+						</h:commandLink>
+						<h:commandLink action="#{perguntaBean.alterarPergunta(pergunta)}" value="Alterar" actionListener="#{perguntaBean.obterObjeto}">	
+							<br></br>
+						</h:commandLink>
+						<f:param name="pergunta" id="pergunta"  value="#{pergunta}"/> 
+					</h:column>
+				</h:dataTable>
+				
+			</fieldset>
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>
+
+</html>

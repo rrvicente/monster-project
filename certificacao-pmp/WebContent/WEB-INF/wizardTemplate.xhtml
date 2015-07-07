@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+     xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  <h:head>
+    <title>
+      <ui:insert name="windowTitle">
+        #{msgs.windowTitle}
+      </ui:insert>
+    </title>
+  </h:head>
+  
+  <h:body>  
+    <h:outputStylesheet library="css" name="styles.css" target="head"/>	    
+    
+		<ui:insert name="heading"/>
+          
+    <div class="wizardPanel">
+    
+      <div class="subheading">
+        <ui:insert name="subheading"/>
+      </div>
+      
+	    <div class="work">
+	      <ui:insert name="work"/>
+	    </div>
+	    
+      <div class="controls">
+        <ui:insert name="controls"/>
+      </div>
+      
+    </div>	   
+        
+  </h:body>
+</html>

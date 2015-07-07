@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="/WEB-INF/_template.xhtml">
+
+	<ui:define name="corpo">
+<f:view>
+
+		<h:form id="form1">
+		<fieldset>
+		<h2>
+			<h:outputText value="Novo"
+				rendered="#{empty perguntaBean.pergunta.id}" />
+			<h:outputText value="Editar"
+				rendered="#{not empty perguntaBean.pergunta.id}" />
+		</h2>
+				<legend>Dados da pergunta</legend>
+
+
+				<h:inputHidden value="#{perguntaBean.pergunta.id}" />
+
+				<h:outputLabel value="Descrição:" for="descricao" />
+				<h:inputTextarea id="descricao" value="#{perguntaBean.pergunta.descricao}" />
+				
+				<h:commandButton value="Salvar" action="#{perguntaBean.salvarPergunta}">
+					<f:ajax execute=":form1" render=":form1" ></f:ajax>
+				</h:commandButton>
+<!-- 		</h:form> -->
+<!-- 		<h:form id="form2"> -->
+			<fieldset>
+				<legend>Dados da Resposta</legend>
+				
+				<h:inputHidden value="#{perguntaBean.resposta.id}" />
+				
+				<h:outputLabel value="Descrição:" for="descricao" />
+				<h:inputTextarea id="descricao_resposta" value="#{perguntaBean.resposta.descricao}" />
+				
+				<h:outputLabel value="Correta?" for="correta" />
+				<h:selectBooleanCheckbox id="correta_resposta" value="#{perguntaBean.resposta.correta}" />
+				
+				<h:commandButton value="Salvar Resposta" action="#{perguntaBean.salvarResposta}">
+					<f:ajax execute=":form1" render=":form1"></f:ajax>
+				</h:commandButton>
+			</fieldset>	
+
+				<h:dataTable value="#{perguntaBean.respostas}" var="resposta" styleClass="dados" rowClasses="impar, par">
+					<h:column>
+						<f:facet name="header">ID</f:facet>
+						#{resposta.id}
+					</h:column>
+					<h:column>
+						<f:facet name="header">Descrição</f:facet>
+						#{resposta.descricao}
+					</h:column>
+					<h:column>
+						<f:facet name="header">Resposta Correta?</f:facet>
+						#{resposta.correta ? 'Sim' : 'Não'}
+					</h:column>
+
+					<h:column>
+						<f:facet name="header">Ações</f:facet>
+						<h:commandLink action="#{perguntaBean.removerResposta(resposta)}" value="Remover">
+							<br></br>
+							<f:ajax execute=":form1" render=":form1" ></f:ajax>
+						</h:commandLink>
+						<h:commandLink action="#{perguntaBean.alterarResposta(resposta)}" value="Alterar">
+							<br></br>
+							<f:ajax execute=":form1" render=":form1" ></f:ajax>
+						</h:commandLink>
+					</h:column>
+				</h:dataTable>
+
+			<h:commandLink value="Perguntas" action="perguntas?faces-redirect=true">
+				<f:ajax execute="@form" render="@form" />
+			</h:commandLink>
+		</fieldset>
+		</h:form>
+	</f:view>							
+	</ui:define>
+
+</ui:composition>
+
+</html>
