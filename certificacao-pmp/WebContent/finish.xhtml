@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+     xmlns:h="http://java.sun.com/jsf/html"
+     xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="/WEB-INF/_template.xhtml">
+
+	<ui:define name="corpo">
+	  <h:head>
+	    <title> #{msgs.windowTitle} </title>
+	  </h:head>
+	  
+	  <h:body>
+	  
+		<h2>
+			<h:outputText value="Resultado"/>
+		</h2>
+	    
+	    <h:dataTable value="#{questions}" var="question" styleClass="dados" rowClasses="impar, par">
+			<h:column>
+				<f:facet name="header"></f:facet> 
+				<h:graphicImage library="imagens" name="#{question.answer.correta ? 'correct.gif' : 'wrong.gif'}" id="correct_wrong" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">Pergunta</f:facet> #{question.question.descricao}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Sua resposta</f:facet> #{question.answer.descricao}
+			</h:column>
+		</h:dataTable>
+		
+	  </h:body>
+  	</ui:define>
+</ui:composition>
+</html>
