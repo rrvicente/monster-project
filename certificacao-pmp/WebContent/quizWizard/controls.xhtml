@@ -15,7 +15,7 @@
 		                    value="#{msgs.nextButtonText}" 
 		           actionListener="#{wizard.nextButtonClicked}"
 		               styleClass="wizardButton"
-		                 disabled="#{wizard.nextButtonEnabled}"/> 
+		                 disabled="#{not wizard.nextButtonEnabled}"/> 
 		
 		      <h:commandButton id="previous"
 		                    value="#{msgs.previousButtonText}" 

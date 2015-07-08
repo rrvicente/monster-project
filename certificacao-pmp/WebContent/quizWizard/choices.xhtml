@@ -8,10 +8,10 @@
 	    
   <h:form id="choices">
     <h:panelGrid columns="2">  
-		  <h:selectOneRadio value="#{questions[wizard.cursor].answer}" layout="pageDirection">
+		  <h:selectOneRadio value="#{questions[wizard.cursor].answer}" layout="pageDirection" valueChangeListener="#{wizard.valueChange}" immediate="true">
 		    <f:selectItems value="#{questions[wizard.cursor].question.respostas}"
-		    var="resposta" itemLabel="#{resposta.descricao}" itemValue="#{resposta.id}"/>
-		    <f:ajax render=":buttons"/>
+		    var="resposta" itemLabel="#{resposta.descricao}" itemValue="#{resposta.id}" />
+		    <f:ajax render=":buttons" listener="#{wizard.valueChange}" execute=":choices"/>
 		  </h:selectOneRadio>
 	  </h:panelGrid>
   </h:form> 

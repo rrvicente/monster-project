@@ -2,10 +2,21 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-     xmlns:h="http://java.sun.com/jsf/html"
-    xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
 
-		<div class="heading">
-		  #{msgs.quizTitle}
+	<script language="javascript">
+    $( window ).load(function() {
+        console.log( "window loaded" );
+        startCountdown();
+    });
+    </script>
+    
+	<div class="heading">
+
+		<div id="cronometro_div">
+			<strong>#{msgs.quizTitle}</strong> <span id="cronometro"></span>
 		</div>
+
+	</div>
 </ui:composition>
