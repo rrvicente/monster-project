@@ -8,9 +8,9 @@
 	    
   <h:form id="choices">
     <h:panelGrid columns="2">  
-		  <h:selectOneRadio value="#{questions[wizard.cursor].answer}"
-		                   layout="pageDirection">
-		    <f:selectItems value="#{questions[wizard.cursor].question.respostas}"/>
+		  <h:selectOneRadio value="#{questions[wizard.cursor].answer}" layout="pageDirection">
+		    <f:selectItems value="#{questions[wizard.cursor].question.respostas}"
+		    var="resposta" itemLabel="#{resposta.descricao}" itemValue="#{resposta.id}"/>
 		    <f:ajax render=":buttons"/>
 		  </h:selectOneRadio>
 	  </h:panelGrid>

@@ -5,6 +5,10 @@
      xmlns:h="http://java.sun.com/jsf/html"
     xmlns:ui="http://java.sun.com/jsf/facelets">
 
+<ui:composition template="/WEB-INF/_template.xhtml">
+
+	<ui:define name="corpo">
+	
   <h:head>
     <title> #{msgs.windowTitle} </title>
   </h:head>
@@ -14,4 +18,7 @@
       <h:commandLink value="#{msgs.startWizard}" action="#{wizard.start}"/>
     </h:form>
   </h:body>
+  
+  	</ui:define>
+</ui:composition>
 </html>

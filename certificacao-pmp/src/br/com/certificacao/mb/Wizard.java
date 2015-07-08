@@ -29,7 +29,10 @@ public class Wizard implements Serializable {
 	@Produces
 	@Named
 	public Question[] getQuestions() {
-		questions = new Questions(perguntaDao);
+		if (questions == null) {
+			questions = new Questions(perguntaDao);
+		}
+
 		return questions.getQuestions();
 	}
 
@@ -58,7 +61,8 @@ public class Wizard implements Serializable {
 	}
 
 	public boolean getNextButtonEnabled() {
-		return cursor != questions.size() - 1 && (questions.getQuestions())[cursor].isAnswered();
+		return cursor != questions.size() - 1
+				&& (questions.getQuestions())[cursor].isAnswered();
 	}
 
 	public boolean getPreviousButtonEnabled() {
@@ -66,7 +70,8 @@ public class Wizard implements Serializable {
 	}
 
 	public boolean getFinishButtonEnabled() {
-		return cursor == questions.size() - 1 && (questions.getQuestions())[cursor].isAnswered();
+		return cursor == questions.size() - 1
+				&& (questions.getQuestions())[cursor].isAnswered();
 	}
 
 	public String start() {
