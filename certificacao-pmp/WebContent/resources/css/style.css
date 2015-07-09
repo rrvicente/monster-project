@@ -14,7 +14,7 @@ body {
 
 /** cabecalho **/
 #cabecalho, header {
-	background-color: #8B8B7A;
+	background-color: #25442D;
 	height: 60px;
 	position: relative;
 }
@@ -67,7 +67,7 @@ body {
 
 /** rodape **/
 #rodape, footer {
-	background-color: #8B8B7A;
+	background-color: #25442D;
 	width: 100%;
 	position: fixed;
 	bottom: 0;
