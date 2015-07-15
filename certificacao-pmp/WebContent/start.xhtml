@@ -15,7 +15,17 @@
   
   <h:body>
     <h:form>
-      <h:commandLink value="#{msgs.startWizard}" action="#{wizard.start}"/>
+    	<table>
+    		<tr>
+    			<td>
+			    	<h:outputLabel value="Quantidade de perguntas:" for="qtd" />
+					<h:inputText id="qtd" value="#{wizard.qtd}" />
+    			</td>
+    		</tr>
+    	</table>
+    	<h:commandLink value="#{msgs.startWizard}" action="#{wizard.start}"/>
+    	<br></br>
+    	<h:commandLink value="#{msgs.chartGenerator}" action="#{wizard.chartGenerator}"/>
     </h:form>
   </h:body>
   

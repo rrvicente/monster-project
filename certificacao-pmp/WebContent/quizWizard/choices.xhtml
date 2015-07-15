@@ -7,7 +7,16 @@
     xmlns:ui="http://java.sun.com/jsf/facelets">
 	    
   <h:form id="choices">
-    <h:panelGrid columns="2">  
+  		<h:dataTable rendered="#{wizard.isRevision() ? true : false}" value="#{questions[wizard.cursor].answer}" var="answer" styleClass="dados" rowClasses="impar, par">
+			<h:column>
+				<f:facet name="header">Revisão</f:facet> 
+				<h:graphicImage library="imagens" name="#{'warning.ico'}" id="warning" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">Resposta</f:facet> #{answer.descricao}
+			</h:column>
+		</h:dataTable>
+    <h:panelGrid columns="2">
 		  <h:selectOneRadio value="#{questions[wizard.cursor].answer}" layout="pageDirection" valueChangeListener="#{wizard.valueChange}" immediate="true">
 		    <f:selectItems value="#{questions[wizard.cursor].question.respostas}"
 		    var="resposta" itemLabel="#{resposta.descricao}" itemValue="#{resposta.id}" />

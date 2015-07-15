@@ -5,20 +5,25 @@ import java.util.Collections;
 import java.util.List;
 
 import br.com.certificacao.entidades.Pergunta;
+import br.com.certificacao.entidades.Question;
 import br.com.certificacao.entidades.dao.PerguntaDao;
 
 public class Questions implements Serializable {
 	private static final long serialVersionUID = -7148843668107920897L;
 	private String question;
-	private Question[] questions = new Question[2];
+	private Question[] questions = new Question[10];
 
-	public Questions(PerguntaDao perguntaDao) {
+	public Questions(PerguntaDao perguntaDao, int qtd) {
 		List<Pergunta> perguntas = perguntaDao.listarPerguntas();
 
-		questions = new Question[2];
+		if (perguntas.size() < qtd) {
+			qtd = perguntas.size();
+		}
 
+		questions = new Question[qtd];
+
+		Collections.shuffle(perguntas);
 		for (int i = 0; i < questions.length; i++) {
-			Collections.shuffle(perguntas);
 			questions[i] = new Question(perguntas.get(0));
 			perguntas.remove(0);
 		}

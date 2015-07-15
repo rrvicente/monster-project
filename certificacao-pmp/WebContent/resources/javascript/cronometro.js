@@ -84,38 +84,47 @@
 //
 //		// Quando o contador chegar a zero faz esta ação
 //	} else {
-//		// window.open('../controllers/logout.php', '_self');
+//		// window.open('../finish.xhtml', '_self');
 //	}
 //}
 
-    
-// 
-var minutos = 20;
-var seconds = 00;
+var minutos = 01;
+var seconds = 01;
 
-//$(document).ready(function() {
+function loadTime() {
 
+	minutos = document.getElementById("minutes").value;
+	seconds = document.getElementById("seconds").value;
 
-	function startCountdown() {
-		var campo = document.getElementById("cronometro");
-		var campo_div = document.getElementById("cronometro_div");
-		if (seconds <= 0) {
-			seconds = 60;
-			minutos -= 1;
-		}
-		if (minutos <= -1) {
-			seconds = 0;
-			seconds += 1;
-			campo.innerHTML = "";
-			campo_div.innerHTML = "Sessão expirada!";
-		} else {
-			seconds -= 1
-			if (seconds < 10) {
-				seconds = "0" + seconds;
-			}
-			campo.innerHTML = " " + minutos + "min" + seconds;
-			setTimeout("startCountdown()", 1000);
-		}
+	startCountdown();
 }
 
-//});
+// $(document).ready(function() {
+
+function startCountdown() {
+	var campo = document.getElementById("cronometro");
+	var campo_div = document.getElementById("cronometro_div");
+	if (seconds <= 0) {
+		seconds = 60;
+		minutos -= 1;
+	}
+	if (minutos <= -1) {
+		seconds = 0;
+		seconds += 1;
+		// campo.innerHTML = "";
+		// campo_div.innerHTML = "Sessão expirada!";
+		// window.open('../finish.xhtml', '_self');
+
+		document.getElementById('buttons:finish').click();
+
+	} else {
+		seconds -= 1
+		if (seconds < 10) {
+			seconds = "0" + seconds;
+		}
+		campo.innerHTML = " " + minutos + "min" + seconds;
+		setTimeout("startCountdown()", 1000);
+	}
+}
+
+// });

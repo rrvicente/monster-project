@@ -6,6 +6,12 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <h:head>
+	<script src="resources/javascript/jquery-1.11.3.js" type="text/javascript" charset="utf-8"></script>
+  	<script src="resources/javascript/cronometro.js" type="text/javascript" charset="utf-8"></script>
+  	<script src="resources/javascript/chartjs/Chart.js" type="text/javascript" charset="utf-8"></script>
+  	<script src="resources/javascript/chart-generator.js" type="text/javascript" charset="utf-8"></script>
+  	<script src="resources/javascript/chat_div.js" type="text/javascript" charset="utf-8"></script>
+	
 	<link rel="shortcut icon" href="logo.png" ></link>
 	<title>Paiaka's System</title>
 	<h:outputStylesheet library="css" name="style.css" />
@@ -27,7 +33,12 @@
 	<div id="conteudo">
 		<ui:insert name="corpo" />
 	</div>
-
+	
+	<div class="window_bottom">
+        <button class="btn_chat" id="minimizeWindow" value="0" type="button">Atendimento Online</button>
+        <img src="http://placehold.it/300x300" alt="" />
+    </div>
+    
 	<div id="rodape">Copyright 2015. Todos os Direitos reservados a Paiaka's System - A Tecnologia da Tribo para o Homem Branco</div>
 </h:body>
 </html>

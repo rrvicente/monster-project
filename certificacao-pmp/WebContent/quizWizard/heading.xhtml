@@ -8,12 +8,14 @@
 	<script language="javascript">
     $( window ).load(function() {
         console.log( "window loaded" );
-        startCountdown();
+        loadTime();
     });
     </script>
     
 	<div class="heading">
-
+		<h:inputHidden id="minutes" value="#{wizard.minutes}" />
+		<h:inputHidden id="seconds" value="#{wizard.seconds}" />
+		
 		<div id="cronometro_div">
 			<strong>#{msgs.quizTitle}</strong> <span id="cronometro"></span>
 		</div>
