@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+     xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="/WEB-INF/_template.xhtml">
+
+	<ui:define name="corpo">
+	
+    <head>
+        <title>Radar Chart</title>
+        <meta name = "viewport" content = "initial-scale = 1, user-scalable = no"/>
+    </head>
+    <body>
+    
+    <script language="javascript">
+    $( window ).load(function() {
+        loadChartData();
+        gerarChart();
+    });
+    </script>
+    
+    <h1> Gráfico </h1>
+    <h3>Perguntas </h3>
+    	<table>
+    		<tr>
+    			<td>
+			        <h:inputHidden id="chart_data" value="#{wizard.chartData}" />
+			        <div style="width:100%">
+			            <canvas id="canvas" height="450" width="450"></canvas>
+			        </div>
+    			</td>
+    			<td>
+			        <div style="width:100%">
+			            <canvas id="canvas2" height="450" width="450"></canvas>
+			        </div>
+    			</td>
+    		</tr>
+    	</table>
+    </body>
+
+  	</ui:define>
+</ui:composition>
+</html>
